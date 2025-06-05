@@ -1,5 +1,5 @@
 """
-ASGI config for almacanina project.
+ASGI config for Almacanina project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
