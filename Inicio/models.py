@@ -99,7 +99,7 @@ class Clientes(models.Model):
     apellido_cliente = models.CharField(db_column='Apellido_cliente', max_length=45)  # Field name made lowercase.
     correo_clientes = models.CharField(db_column='Correo_clientes', max_length=45)  # Field name made lowercase.
     telefono_cliente = models.CharField(db_column='Telefono_cliente', max_length=45)  # Field name made lowercase.
-    dni_cliente = models.IntegerField(db_column='DNI_cliente')  # Field name made lowercase.
+    dni_cliente = models.CharField(db_column='DNI_cliente', max_length=45)  # Field name made lowercase.
     estado_cliente = models.IntegerField(db_column='Estado_cliente')  # Field name made lowercase.
 
     class Meta:
@@ -125,7 +125,7 @@ class Compras(models.Model):
 
 
 class DetalleCompras(models.Model):
-    id_detalle_compra = models.IntegerField(db_column='Id_detalle_compra', primary_key=True)  # Field name made lowercase.
+    id_detalle_compra = models.AutoField(db_column='Id_detalle_compra', primary_key=True)  # Field name made lowercase.
     precio_unitario_dtc = models.DecimalField(db_column='Precio_unitario_dtc', max_digits=12, decimal_places=5)  # Field name made lowercase.
     subtotal_dtc = models.DecimalField(db_column='Subtotal_dtc', max_digits=12, decimal_places=5)  # Field name made lowercase.
     descuento_dtc = models.DecimalField(db_column='Descuento_dtc', max_digits=12, decimal_places=5)  # Field name made lowercase.
@@ -142,7 +142,7 @@ class DetalleCompras(models.Model):
 
 
 class DetalleSolicOc(models.Model):
-    id_detalle_solic_oc = models.IntegerField(db_column='Id_detalle_solic_OC', primary_key=True)  # Field name made lowercase.
+    id_detalle_solic_oc = models.AutoField(db_column='Id_detalle_solic_OC', primary_key=True)  # Field name made lowercase.
     cantidad_producto_oc = models.IntegerField(db_column='Cantidad_producto_OC')  # Field name made lowercase.
     precio_unitario_oc = models.DecimalField(db_column='Precio_unitario_OC', max_digits=12, decimal_places=5)  # Field name made lowercase.
     sub_total_oc = models.DecimalField(db_column='Sub_total_OC', max_digits=12, decimal_places=5)  # Field name made lowercase.
@@ -217,7 +217,7 @@ class Empleados(models.Model):
     id_emp = models.AutoField(db_column='Id_emp', primary_key=True)  # Field name made lowercase.
     nombre_emp = models.CharField(db_column='Nombre_emp', max_length=45)  # Field name made lowercase.
     apellido_emp = models.CharField(db_column='Apellido_emp', max_length=45)  # Field name made lowercase.
-    dni_emp = models.IntegerField(db_column='DNI_emp')  # Field name made lowercase.
+    dni_emp = models.CharField(db_column='DNI_emp', max_length=45)  # Field name made lowercase.
     direccion_emp = models.CharField(db_column='Direccion_emp', max_length=455)  # Field name made lowercase.
     telefono_emp = models.IntegerField(db_column='Telefono_emp')  # Field name made lowercase.
     correo_emp = models.CharField(db_column='Correo_emp', max_length=100)  # Field name made lowercase.
@@ -229,7 +229,7 @@ class Empleados(models.Model):
 
 
 class Mascotas(models.Model):
-    id_mascotas = models.IntegerField(db_column='Id_mascotas', primary_key=True)  # Field name made lowercase.
+    id_mascotas = models.AutoField(db_column='Id_mascotas', primary_key=True)  # Field name made lowercase.
     estado_mascota = models.IntegerField(db_column='Estado_mascota', blank=True, null=True)  # Field name made lowercase.
     id_cliente_masc = models.ForeignKey(Clientes, models.DO_NOTHING, db_column='Id_cliente_masc')  # Field name made lowercase.
 
@@ -239,7 +239,7 @@ class Mascotas(models.Model):
 
 
 class OrdenCompras(models.Model):
-    id_orden_compra = models.IntegerField(db_column='Id_orden_compra', primary_key=True)  # Field name made lowercase.
+    id_orden_compra = models.AutoField(db_column='Id_orden_compra', primary_key=True)  # Field name made lowercase.
     fecha_emision_orden = models.DateField(db_column='Fecha_emision_orden')  # Field name made lowercase.
     total_orden = models.DecimalField(db_column='Total_orden', max_digits=12, decimal_places=5)  # Field name made lowercase.
     estado_orden = models.IntegerField(db_column='Estado_orden')  # Field name made lowercase.
@@ -251,7 +251,7 @@ class OrdenCompras(models.Model):
 
 
 class PrecioServicios(models.Model):
-    id_precio_servicio = models.IntegerField(db_column='Id_precio_servicio', primary_key=True)  # Field name made lowercase.
+    id_precio_servicio = models.AutoField(db_column='Id_precio_servicio', primary_key=True)  # Field name made lowercase.
     id_servicio_preser = models.ForeignKey('Servicios', models.DO_NOTHING, db_column='Id_servicio_preser')  # Field name made lowercase.
     precio_unitario_preser = models.DecimalField(db_column='Precio_unitario_preser', max_digits=12, decimal_places=5)  # Field name made lowercase.
     precio_completo_preser = models.DecimalField(db_column='Precio_completo_preser', max_digits=12, decimal_places=5)  # Field name made lowercase.
@@ -292,7 +292,7 @@ class Proveedoress(models.Model):
 
 
 class Provxprod(models.Model):
-    id_provxprod = models.IntegerField(db_column='Id_provXprod', primary_key=True)  # Field name made lowercase.
+    id_provxprod = models.AutoField(db_column='Id_provXprod', primary_key=True)  # Field name made lowercase.
     id_prov_fk = models.ForeignKey(Proveedoress, models.DO_NOTHING, db_column='Id_prov_fk')  # Field name made lowercase.
     id_prod_fk = models.ForeignKey(Productos, models.DO_NOTHING, db_column='Id_prod_fk')  # Field name made lowercase.
     estado_provxprod = models.IntegerField(db_column='Estado_provXprod', blank=True, null=True)  # Field name made lowercase.
@@ -344,7 +344,7 @@ class ServiciosPrestados(models.Model):
 
 
 class SolicitudOrdenCompras(models.Model):
-    id_solicitud_orden_compra = models.IntegerField(db_column='Id_solicitud_orden_compra', primary_key=True)  # Field name made lowercase.
+    id_solicitud_orden_compra = models.AutoField(db_column='Id_solicitud_orden_compra', primary_key=True)  # Field name made lowercase.
     fecha_solicitud_orc = models.DateField(db_column='Fecha_solicitud_orc')  # Field name made lowercase.
     descripcion_orc = models.CharField(db_column='Descripcion_orc', max_length=455)  # Field name made lowercase.
     estado_orc = models.IntegerField(db_column='Estado_orc')  # Field name made lowercase.
@@ -369,7 +369,7 @@ class Stocks(models.Model):
 
 
 class Turnos(models.Model):
-    id_turno = models.IntegerField(db_column='Id_turno', primary_key=True)  # Field name made lowercase.
+    id_turno = models.AutoField(db_column='Id_turno', primary_key=True)  # Field name made lowercase.
     fecha_turno = models.DateField(db_column='Fecha_turno')  # Field name made lowercase.
     hora_turno = models.TimeField(db_column='Hora_turno')  # Field name made lowercase.
     motivo_cance_turno = models.CharField(db_column='Motivo_cance_turno', max_length=255, blank=True, null=True)  # Field name made lowercase.
